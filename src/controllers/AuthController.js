@@ -42,4 +42,21 @@ export default class AuthController {
     store.commit("setAuthToken", token);
     store.commit("setRefreshToken", refreshToken);
   }
+
+  static async fetchToken() {
+    const refreshToken = localStorage.getItem("refreshToken");
+    console.log(refreshToken);
+    let response;
+    try {
+      response = await Axios.post(`${constants.apiUrl}/auth/token`, {
+        refreshToken
+      });
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+
+    const token = response.data.payload.token;
+    store.commit("setAuthToken", token);
+  }
 }

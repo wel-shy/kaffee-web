@@ -9,6 +9,7 @@ const mutations = {
   },
 
   setRefreshToken: (state, token) => {
+    localStorage.setItem("refreshToken", token);
     state.refreshToken = token;
   }
 };
