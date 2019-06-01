@@ -3,12 +3,12 @@
         section.section.container
             LoginForm(
                 v-if="showLogin",
-                @submitted="login(e)",
+                @submitted="login",
                 @switch-form="switchForm"
             )
             RegisterForm(
                 v-else,
-                @submitted="register(e)",
+                @submitted="register",
                 @switch-form="switchForm"
             )
 </template>
@@ -16,33 +16,31 @@
 <script>
 import LoginForm from "../components/LoginForm.vue";
 import RegisterForm from "../components/RegisterForm.vue";
+import AuthController from "../controllers/AuthController";
 
 export default {
-    name: "AuthContainer",
-    components: {
-        LoginForm,
-        RegisterForm
+  name: "AuthContainer",
+  components: {
+    LoginForm,
+    RegisterForm
+  },
+  data: function() {
+    return {
+      showLogin: true
+    };
+  },
+  methods: {
+    login: function(eventData) {
+      AuthController.login(eventData.email, eventData.password);
     },
-    data: function () {
-        return {
-            showLogin: true
-        };
+    register: function(eventData) {
+      AuthController.register(eventData.email, eventData.password);
     },
-    methods: {
-        login: function(eventData) {
-            console.log(eventData);
-        },
-        register: function(eventData) {
-            console.log(eventData);
-        },
-        switchForm: function () {
-            this.showLogin = !this.showLogin;
-        }
+    switchForm: function() {
+      this.showLogin = !this.showLogin;
     }
-}
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
-
+<style lang="scss" scoped></style>

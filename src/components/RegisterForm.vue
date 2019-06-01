@@ -66,30 +66,27 @@
 
 <script>
 export default {
-    name: "RegisterForm",
-    data: function() {
-        return {
-            email: "",
-            password: "",
-            confirmPassword: ""
-        };
-    },
-    methods: {
-        register: function() {
-            if (password !== confirmPassword) {
-                return;
-            }
+  name: "RegisterForm",
+  data: function() {
+    return {
+      email: "",
+      password: "",
+      confirmPassword: ""
+    };
+  },
+  methods: {
+    register: function() {
+      if (this.password !== this.confirmPassword) {
+        return;
+      }
 
-            this.$emit("submitted", {
-                email,
-                password
-            })
-        }
+      this.$emit("submitted", {
+        email: this.email,
+        password: this.password
+      });
     }
-}
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
-
+<style lang="scss" scoped></style>

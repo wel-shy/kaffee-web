@@ -51,25 +51,22 @@
 
 <script>
 export default {
-    name: "LoginForm",
-    data: function() {
-        return {
-            email: "",
-            password: "",
-        };
-    },
-    methods: {
-        login: function() {
-            this.$emit("submitted", {
-                email,
-                password
-            })
-        }
+  name: "LoginForm",
+  data: function() {
+    return {
+      email: "",
+      password: ""
+    };
+  },
+  methods: {
+    login: function() {
+      this.$emit("submitted", {
+        email: this.email,
+        password: this.password
+      });
     }
-}
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
-
+<style lang="scss" scoped></style>
