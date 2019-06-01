@@ -2,7 +2,7 @@
     div#add-container
         section.section
             Button(
-                @button-clicked="logCoffee()",
+                @clicked="logCoffee()",
                 :msg="msg",
                 :color="buttonColor",
                 :textColor="textColor"
@@ -13,30 +13,28 @@
 import Button from "../components/Button.vue";
 
 export default {
-    name: "AddContainer",
-    components: {
-        Button,
-    },
-    data: function () {
-        return {
-            msg: "Log a coffee",
-            buttonColor: "#ED5656",
-            textColor: "#FFFFFF"
-        };
-    },
-    methods: {
-        logCoffee: function () {
-            console.log("logging coffee");
-            this.$store.commit("incrementCount");
-        }
-    },
-}
+  name: "AddContainer",
+  components: {
+    Button
+  },
+  data: function() {
+    return {
+      msg: "Log a coffee",
+      buttonColor: "#ED5656",
+      textColor: "#FFFFFF"
+    };
+  },
+  methods: {
+    logCoffee: function() {
+      console.log("logging coffee");
+      this.$store.commit("incrementCount");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-    .section {
-        padding-top: 0;
-    }
+.section {
+  padding-top: 0;
+}
 </style>
-
-

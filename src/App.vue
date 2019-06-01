@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Title></Title>
+    <AuthContainer></AuthContainer>
     <AddContainer></AddContainer>
     <CountContainer></CountContainer>
   </div>
@@ -8,8 +9,9 @@
 
 <script>
 import Title from "./components/Title.vue";
-import AddContainer from "./containers/AddContainer.vue"
-import CountContainer from "./containers/CountContainer.vue"
+import AddContainer from "./containers/AddContainer.vue";
+import CountContainer from "./containers/CountContainer.vue";
+import AuthContainer from "./containers/AuthContainer.vue";
 
 export default {
   name: "app",
@@ -17,6 +19,7 @@ export default {
     Title,
     AddContainer,
     CountContainer,
+    AuthContainer
   }
 };
 </script>

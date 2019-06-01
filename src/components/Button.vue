@@ -1,7 +1,7 @@
 <template lang="pug">
     div#button
         button.button(
-            @click="$emit('button-clicked')",
+            @click="$emit('clicked')",
             type="button",
             :style="{'background-color': color, 'color': textColor}"
         ) {{msg}}
@@ -9,11 +9,9 @@
 
 <script>
 export default {
-    name: "Button",
-    props: ["msg", "color", "textColor"]
-}
+  name: "Button",
+  props: ["msg", "color", "textColor"]
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
