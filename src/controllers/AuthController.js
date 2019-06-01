@@ -58,4 +58,17 @@ export default class AuthController {
     const token = response.data.payload.token;
     store.commit("setAuthToken", token);
   }
+
+  static async deleteAccount() {
+    try {
+      await Axios.delete(`${constants.apiUrl}/user`, {
+        headers: { "x-access-token": store.getters.getAuthToken }
+      });
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+
+    return true;
+  }
 }

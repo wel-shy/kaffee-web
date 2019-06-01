@@ -4,12 +4,20 @@
             div.hero-header.has-text-right(
                 v-if="isAuthenticated"
             )
-                Button#logout(
-                    @clicked="logout()",
-                    :msg="logoutMsg",
-                    :color="logoutColor",
-                    :textColor="logoutTextColor"
-                )
+                div.buttons
+                    Button#logout(
+                        @clicked="logout()",
+                        :msg="logoutMsg",
+                        :color="logoutColor",
+                        :textColor="logoutTextColor"
+                    )
+
+                    Button#delete(
+                        @clicked="deleteAccount()",
+                        :msg="deleteMsg",
+                        :color="deleteColor",
+                        :textColor="logoutTextColor"
+                    )
             div.hero-body
                 h1.title Kaffee ☕️
 
@@ -17,7 +25,7 @@
 
 <script>
 import Button from "./Button.vue";
-import { functionDeclaration } from "babel-types";
+import AuthController from "../controllers/AuthController";
 
 export default {
   name: "Title",
@@ -27,7 +35,9 @@ export default {
   data: function() {
     return {
       logoutMsg: "Logout",
+      deleteMsg: "Delete Account",
       logoutColor: "#3273dc",
+      deleteColor: "#ff3860",
       logoutTextColor: "white"
     };
   },
@@ -39,13 +49,22 @@ export default {
   methods: {
     logout: function() {
       this.$store.commit("deleteTokens");
+    },
+    deleteAccount: async function() {
+      const deleted = await AuthController.deleteAccount();
+      this.$store.commit("deleteTokens");
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-#logout {
+.buttons {
+  float: right;
   margin-right: 5%;
+
+  #delete {
+    margin-left: 5px;
+  }
 }
 </style>
