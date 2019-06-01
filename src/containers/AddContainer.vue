@@ -11,6 +11,7 @@
 
 <script>
 import Button from "../components/Button.vue";
+import CoffeeController from "../controllers/CoffeeController";
 
 export default {
   name: "AddContainer",
@@ -25,9 +26,8 @@ export default {
     };
   },
   methods: {
-    logCoffee: function() {
-      console.log("logging coffee");
-      this.$store.commit("incrementCount");
+    logCoffee: async function() {
+      await CoffeeController.addCoffee();
     }
   }
 };
