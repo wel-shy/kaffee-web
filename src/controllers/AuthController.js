@@ -45,7 +45,6 @@ export default class AuthController {
 
   static async fetchToken() {
     const refreshToken = localStorage.getItem("refreshToken");
-    console.log(refreshToken);
     let response;
     try {
       response = await Axios.post(`${constants.apiUrl}/auth/token`, {

@@ -1,6 +1,6 @@
 <template lang="pug">
     div#button
-        button.button(
+        button.button.is-rounded.is-outlined(
             @click="$emit('clicked')",
             type="button",
             :style="{'background-color': color, 'color': textColor}"

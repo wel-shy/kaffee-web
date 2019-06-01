@@ -11,6 +11,13 @@ const mutations = {
   setRefreshToken: (state, token) => {
     localStorage.setItem("refreshToken", token);
     state.refreshToken = token;
+  },
+
+  deleteTokens: state => {
+    state.authToken = "";
+    state.refreshToken = "";
+
+    localStorage.clear();
   }
 };
 

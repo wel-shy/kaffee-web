@@ -20,7 +20,7 @@ export default {
   data: function() {
     return {
       msg: "Log a coffee",
-      buttonColor: "#ED5656",
+      buttonColor: "#00d1b2",
       textColor: "#FFFFFF"
     };
   },
