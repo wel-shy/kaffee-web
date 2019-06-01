@@ -5,12 +5,17 @@
 </template>
 
 <script>
+import CoffeeController from "../controllers/CoffeeController";
+
 export default {
   name: "CountContainer",
   computed: {
     count: function() {
       return this.$store.getters.getCount;
     }
+  },
+  async mounted() {
+      await CoffeeController.getCoffeeCount();
   }
 };
 </script>

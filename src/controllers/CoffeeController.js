@@ -19,4 +19,18 @@ export default class CoffeeController {
 
     store.commit("incrementCount");
   }
+
+  static async getCoffeeCount() {
+      let response;
+    try {
+      response = await Axios.get(`${constants.apiUrl}/coffee/count`, {
+        headers: { "x-access-token": store.getters.getAuthToken }
+      });
+    } catch (error) {
+      console.error(error);
+      return;
+    }
+    const count = response.data.payload.count;
+    store.commit("setCount", count);
+  }
 }
