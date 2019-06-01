@@ -23,6 +23,7 @@ export default {
     methods: {
         logCoffee: function () {
             console.log("logging coffee");
+            this.$store.commit("incrementCount");
         }
     },
 }

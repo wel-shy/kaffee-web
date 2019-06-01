@@ -7,11 +7,11 @@
 <script>
 export default {
     name: "CountContainer",
-    data: function() {
-        return {
-            count: 0
-        };
-    },
+    computed: {
+        count: function () {
+            return this.$store.getters.getCount;
+        }
+    }
 }
 </script>
 
