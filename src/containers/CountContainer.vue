@@ -1,7 +1,7 @@
 <template lang="pug">
     div#count-container
         section.section
-            p You've had {{count}} cups of damn fine coffee.
+            p You've had {{count}} damn fine cups of coffee
 </template>
 
 <script>

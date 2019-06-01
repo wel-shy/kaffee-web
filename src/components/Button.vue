@@ -1,15 +1,16 @@
 <template lang="pug">
     div#button
-        button.button.is-primary(
+        button.button(
             @click="$emit('button-clicked')",
             type="button",
+            :style="{'background-color': color, 'color': textColor}"
         ) {{msg}}
 </template>
 
 <script>
 export default {
     name: "Button",
-    props: ["msg", "color"]
+    props: ["msg", "color", "textColor"]
 }
 </script>
 

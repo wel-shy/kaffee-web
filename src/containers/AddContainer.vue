@@ -3,7 +3,9 @@
         section.section
             Button(
                 @button-clicked="logCoffee()",
-                :msg="msg"
+                :msg="msg",
+                :color="buttonColor",
+                :textColor="textColor"
             )
 </template>
 
@@ -18,6 +20,8 @@ export default {
     data: function () {
         return {
             msg: "Log a coffee",
+            buttonColor: "#ED5656",
+            textColor: "#FFFFFF"
         };
     },
     methods: {
