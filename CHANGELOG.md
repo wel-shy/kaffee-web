@@ -1,6 +1,11 @@
 # 0.1.0 (2019-06-02)
 
 
+### Bug Fixes
+
+* fixing changelog configs :bug: ([2f748e0](https://github.com/wel-shy/kaffee-web/commit/2f748e0))
+
+
 ### Features
 
 * adding auto changelog and commit linting :sparkles: ([95584f8](https://github.com/wel-shy/kaffee-web/commit/95584f8))
