@@ -3,8 +3,6 @@ import store from "../store";
 import { constants } from "../Constants";
 
 export default class AuthController {
-  static apiUrl = "http://localhost:3000/api";
-
   static async register(email, password) {
     let response;
     try {
@@ -13,7 +11,7 @@ export default class AuthController {
         password
       });
     } catch (error) {
-      console.error(error);
+      console.error(JSON.stringify(error, null, 2));
       return;
     }
 

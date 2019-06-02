@@ -1,3 +1,3 @@
 export const constants = {
-  apiUrl: "http://localhost:3000/api"
+  apiUrl: "https://api.kaffee.dwelsh.uk/api"
 };
