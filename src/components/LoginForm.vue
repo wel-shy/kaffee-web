@@ -34,7 +34,8 @@
                 div.field
                     p.control
                         button.button.is-info(
-                            @click="login"
+                            @click="login",
+                            :disabled="submitDisabled"
                         ) Login
         
         div.field.is-horizontal
@@ -64,6 +65,11 @@ export default {
         email: this.email,
         password: this.password
       });
+    }
+  },
+  computed: {
+    submitDisabled: function() {
+      return this.email.length == 0 || this.password.length == 0;
     }
   }
 };

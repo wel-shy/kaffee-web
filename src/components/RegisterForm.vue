@@ -48,7 +48,8 @@
                 div.field
                     p.control
                         button.button.is-info(
-                            @click="register"
+                            @click="register",
+                            :disabled="submitDisabled"
                         ) Register
 
         div.field.is-horizontal
@@ -84,6 +85,15 @@ export default {
         email: this.email,
         password: this.password
       });
+    }
+  },
+  computed: {
+    submitDisabled: function() {
+      return (
+        this.email.length == 0 ||
+        this.password.length == 0 ||
+        this.confirmPassword.length == 0
+      );
     }
   }
 };
