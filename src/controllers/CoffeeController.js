@@ -13,7 +13,6 @@ export default class CoffeeController {
         }
       );
     } catch (error) {
-      console.error(error);
       return;
     }
 
@@ -21,13 +20,12 @@ export default class CoffeeController {
   }
 
   static async getCoffeeCount() {
-      let response;
+    let response;
     try {
       response = await Axios.get(`${constants.apiUrl}/coffee/count`, {
         headers: { "x-access-token": store.getters.getAuthToken }
       });
     } catch (error) {
-      console.error(error);
       return;
     }
     const count = response.data.payload.count;
