@@ -1,6 +1,7 @@
 import Axios from "axios";
 import store from "../store";
 import { constants } from "../Constants";
+import NotificationController from "./NotificationController";
 
 export default class AuthController {
   static async register(email, password) {
@@ -11,6 +12,7 @@ export default class AuthController {
         password
       });
     } catch (error) {
+      NotificationController.setError("Could not register an account.");
       return;
     }
 
@@ -29,6 +31,7 @@ export default class AuthController {
         password
       });
     } catch (error) {
+      NotificationController.setError("Username or password is incorrect.");
       return;
     }
 
@@ -47,6 +50,7 @@ export default class AuthController {
         refreshToken
       });
     } catch (error) {
+      NotificationController.setError("Could not restore session.");
       return;
     }
 
@@ -60,6 +64,7 @@ export default class AuthController {
         headers: { "x-access-token": store.getters.getAuthToken }
       });
     } catch (error) {
+      NotificationController.setError("Could not delete your account.");
       return false;
     }
 

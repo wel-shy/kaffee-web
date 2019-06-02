@@ -1,5 +1,6 @@
 <template lang="pug">
     div#app
+      Notification
       Title
       AuthContainer(
         v-if="!isAuthenticated"
@@ -14,6 +15,8 @@
 
 <script>
 import Title from "./components/Title.vue";
+import Notification from "./components/Notification.vue";
+
 import AddContainer from "./containers/AddContainer.vue";
 import CountContainer from "./containers/CountContainer.vue";
 import AuthContainer from "./containers/AuthContainer.vue";
@@ -25,7 +28,8 @@ export default {
     Title,
     AddContainer,
     CountContainer,
-    AuthContainer
+    AuthContainer,
+    Notification
   },
   computed: {
     isAuthenticated: function() {
@@ -45,7 +49,6 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
