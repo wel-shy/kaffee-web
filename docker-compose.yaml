@@ -1,0 +1,43 @@
+version: '3'
+services:
+  kaffee_api:
+    image: djwelsh/kaffee-api:latest
+    ports:
+      - 3000:8008
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    environment:
+      LOCAL: ${LOCAL}
+      DEBUG: ${DEBUG}
+      SECRET: ${SECRET}
+      REFRESH_SECRET: ${REFRESH_SECRET}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+
+  kaffee_web:
+    container_name: 'kaffee_web'
+    build: .
+    links:
+      - kaffee_api
+    depends_on:
+      - kaffee_api
+
+  mysql:
+    image: mysql:5.7
+    command: --explicit_defaults_for_timestamp
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: kaffee
+    volumes:
+      - mysql_database:/var/lib/mysql
+    restart: always
+
+volumes:
+  mysql_database:
