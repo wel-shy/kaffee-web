@@ -15,7 +15,7 @@ export default {
     }
   },
   async mounted() {
-      await CoffeeController.getCoffeeCount();
+    await CoffeeController.getCoffeeCount();
   }
 };
 </script>

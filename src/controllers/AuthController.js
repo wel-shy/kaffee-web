@@ -11,7 +11,6 @@ export default class AuthController {
         password
       });
     } catch (error) {
-      console.error(JSON.stringify(error, null, 2));
       return;
     }
 
@@ -30,7 +29,6 @@ export default class AuthController {
         password
       });
     } catch (error) {
-      console.error(error);
       return;
     }
 
@@ -49,7 +47,6 @@ export default class AuthController {
         refreshToken
       });
     } catch (error) {
-      console.error(error);
       return;
     }
 
@@ -63,7 +60,6 @@ export default class AuthController {
         headers: { "x-access-token": store.getters.getAuthToken }
       });
     } catch (error) {
-      console.error(error);
       return false;
     }
 

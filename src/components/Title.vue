@@ -52,7 +52,9 @@ export default {
     },
     deleteAccount: async function() {
       const deleted = await AuthController.deleteAccount();
-      this.$store.commit("deleteTokens");
+      if (deleted) {
+        this.$store.commit("deleteTokens");
+      }
     }
   }
 };
