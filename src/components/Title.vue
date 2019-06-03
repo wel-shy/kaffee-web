@@ -1,23 +1,6 @@
 <template lang="pug">
     div#title
         div.hero
-            div.hero-header.has-text-right(
-                v-if="isAuthenticated"
-            )
-                div.buttons
-                    Button#logout(
-                        @clicked="logout()",
-                        :msg="logoutMsg",
-                        :color="logoutColor",
-                        :textColor="logoutTextColor"
-                    )
-
-                    Button#delete(
-                        @clicked="deleteAccount()",
-                        :msg="deleteMsg",
-                        :color="deleteColor",
-                        :textColor="logoutTextColor"
-                    )
             div.hero-body
                 h1.title Kaffee ☕️
 
@@ -71,6 +54,6 @@ export default {
 }
 
 .title {
-    text-align: center;
+  text-align: center;
 }
 </style>

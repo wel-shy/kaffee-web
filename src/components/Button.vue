@@ -1,10 +1,11 @@
 <template lang="pug">
     div#button
-        button.button.is-rounded.is-outlined(
+        button.button.is-inverted(
             @click="$emit('clicked')",
             type="button",
             :style="{'background-color': color, 'color': textColor}"
-        ) {{msg}}
+        ) 
+          strong {{msg}}
 </template>
 
 <script>
