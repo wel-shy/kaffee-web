@@ -12,12 +12,15 @@
       )
         AddContainer
         CountContainer
+      
+      Footer
 </template>
 
 <script>
 import Title from "./components/Title.vue";
 import Notification from "./components/Notification.vue";
 import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 
 import AddContainer from "./containers/AddContainer.vue";
 import CountContainer from "./containers/CountContainer.vue";
@@ -32,7 +35,8 @@ export default {
     AddContainer,
     CountContainer,
     AuthContainer,
-    Notification
+    Notification,
+    Footer
   },
   computed: {
     isAuthenticated: function() {
