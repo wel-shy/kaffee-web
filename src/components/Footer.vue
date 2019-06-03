@@ -22,18 +22,25 @@
                     href="https://github.com/wel-shy/kaffee-web/blob/master/LICENSE"
                 ) MIT
                 |.
+        Notification
 
 </template>
 
 <script>
+import Notification from "../components/Notification";
+
 export default {
-  name: "Footer"
+  name: "Footer",
+  components: {
+    Notification
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 #footer {
   position: absolute;
+  height: 1.5%;
   bottom: 0;
   width: 100%;
 }

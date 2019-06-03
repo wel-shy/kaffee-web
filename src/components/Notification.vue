@@ -34,8 +34,20 @@ export default {
   font-family: "Inconsolata", monospace;
   width: 20%;
   position: absolute;
-  right: 2.5%;
-  bottom: 2.5%;
+  right: 15px;
+  bottom: 15px;
   text-align: left;
+}
+
+@media only screen and (max-width: 769px) {
+  #notification {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  #notification {
+    width: 75%;
+  }
 }
 </style>
