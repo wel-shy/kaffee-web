@@ -69,4 +69,8 @@ export default {
     margin-left: 5px;
   }
 }
+
+.title {
+    text-align: center;
+}
 </style>
