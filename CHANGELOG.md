@@ -1,3 +1,19 @@
+# [0.4.0](https://github.com/wel-shy/kaffee-web/compare/v0.3.0...v0.4.0) (2019-06-03)
+
+
+### Bug Fixes
+
+* fixing license link :bug: ([8a24bec](https://github.com/wel-shy/kaffee-web/commit/8a24bec))
+* **nav:** fixing navigation buttons :bug: ([be8f541](https://github.com/wel-shy/kaffee-web/commit/be8f541))
+* fixing text alignment on mobile :lipstick: ([35935f0](https://github.com/wel-shy/kaffee-web/commit/35935f0))
+
+
+### Features
+
+* adding footer :sparkles: ([e10a7ee](https://github.com/wel-shy/kaffee-web/commit/e10a7ee))
+
+
+
 # [0.3.0](https://github.com/wel-shy/kaffee-web/compare/v0.2.0...v0.3.0) (2019-06-03)
 
 
