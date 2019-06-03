@@ -1,5 +1,5 @@
 <template lang="pug">
-    div#add-container
+    div#add-container.has-text-center
         section.section
             Button(
                 @clicked="logCoffee()",
@@ -36,5 +36,6 @@ export default {
 <style lang="scss" scoped>
 .section {
   padding-top: 0;
+  text-align: center;
 }
 </style>

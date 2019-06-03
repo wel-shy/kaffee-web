@@ -1,5 +1,6 @@
 <template lang="pug">
     div#app
+      Navbar
       Notification
       Title
       AuthContainer(
@@ -11,11 +12,15 @@
       )
         AddContainer
         CountContainer
+      
+      Footer
 </template>
 
 <script>
 import Title from "./components/Title.vue";
 import Notification from "./components/Notification.vue";
+import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 
 import AddContainer from "./containers/AddContainer.vue";
 import CountContainer from "./containers/CountContainer.vue";
@@ -25,11 +30,13 @@ import AuthController from "./controllers/AuthController";
 export default {
   name: "app",
   components: {
+    Navbar,
     Title,
     AddContainer,
     CountContainer,
     AuthContainer,
-    Notification
+    Notification,
+    Footer
   },
   computed: {
     isAuthenticated: function() {
@@ -51,8 +58,6 @@ export default {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
