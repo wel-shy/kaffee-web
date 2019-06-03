@@ -31,8 +31,8 @@ import AddContainer from "./containers/AddContainer.vue";
 import CountContainer from "./containers/CountContainer.vue";
 import AuthContainer from "./containers/AuthContainer.vue";
 import AuthController from "./controllers/AuthController";
-import BusyController from './controllers/BusyController';
-import CoffeeController from './controllers/CoffeeController';
+import BusyController from "./controllers/BusyController";
+import CoffeeController from "./controllers/CoffeeController";
 
 export default {
   name: "app",
@@ -54,7 +54,7 @@ export default {
     }
   },
   mounted: async function() {
-    BusyController.setBusy("Logging in")
+    BusyController.setBusy("Logging in");
 
     const refreshToken = localStorage.getItem("refreshToken");
     if (!refreshToken) {

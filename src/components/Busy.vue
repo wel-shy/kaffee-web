@@ -11,9 +11,9 @@
 export default {
   name: "Busy",
   computed: {
-      message: function () {
-          return this.$store.getters.getBusyMessage;
-      }
+    message: function() {
+      return this.$store.getters.getBusyMessage;
+    }
   }
 };
 </script>

@@ -17,7 +17,7 @@
 import LoginForm from "../components/LoginForm.vue";
 import RegisterForm from "../components/RegisterForm.vue";
 import AuthController from "../controllers/AuthController";
-import CoffeeController from '../controllers/CoffeeController';
+import CoffeeController from "../controllers/CoffeeController";
 
 export default {
   name: "AuthContainer",
@@ -32,7 +32,10 @@ export default {
   },
   methods: {
     login: async function(eventData) {
-      const token = await AuthController.login(eventData.email, eventData.password);
+      const token = await AuthController.login(
+        eventData.email,
+        eventData.password
+      );
       if (token) {
         await CoffeeController.getCoffeeCount();
       }
