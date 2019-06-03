@@ -19,7 +19,7 @@
                 ) API
                 | &nbsp;licenced under&nbsp;
                 a(
-                    href=""
+                    href="https://github.com/wel-shy/kaffee-web/blob/master/LICENSE"
                 ) MIT
                 |.
 
