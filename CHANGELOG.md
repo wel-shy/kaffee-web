@@ -1,3 +1,17 @@
+# [0.5.0](https://github.com/wel-shy/kaffee-web/compare/v0.4.0...v0.5.0) (2019-06-03)
+
+
+### Bug Fixes
+
+* **notification:** fixing notification :bug: ([15f835d](https://github.com/wel-shy/kaffee-web/commit/15f835d))
+
+
+### Features
+
+* adding busy spinner :sparkles: ([bdf6db2](https://github.com/wel-shy/kaffee-web/commit/bdf6db2))
+
+
+
 # [0.4.0](https://github.com/wel-shy/kaffee-web/compare/v0.3.0...v0.4.0) (2019-06-03)
 
 
