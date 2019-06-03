@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import AuthController from "../controllers/AuthController";
+import NotificationController from "../controllers/NotificationController";
 export default {
   name: "LoginForm",
   data: function() {
@@ -61,6 +63,11 @@ export default {
   },
   methods: {
     login: function() {
+      const validEmail = AuthController.validateEmail(this.email);
+      if (!validEmail) {
+        NotificationController.setError("Email not valid.");
+        return;
+      }
       this.$emit("submitted", {
         email: this.email,
         password: this.password

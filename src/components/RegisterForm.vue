@@ -66,6 +66,8 @@
 </template>
 
 <script>
+import AuthController from "../controllers/AuthController";
+import NotificationController from "../controllers/NotificationController";
 export default {
   name: "RegisterForm",
   data: function() {
@@ -77,6 +79,11 @@ export default {
   },
   methods: {
     register: function() {
+      const verified = AuthController.validateEmail(this.email);
+      if (!verified) {
+        NotificationController.setError("Email not valid");
+        return;
+      }
       if (this.password !== this.confirmPassword) {
         return;
       }
