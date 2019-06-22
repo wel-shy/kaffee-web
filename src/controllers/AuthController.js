@@ -9,7 +9,7 @@ export default class AuthController {
     BusyController.setBusy("Registering account");
     let response;
     try {
-      response = await Axios.post(`${constants.apiUrl}/auth/register`, {
+      response = await Axios.post(`${constants.apiUrl}/user/`, {
         email,
         password
       });
@@ -19,13 +19,12 @@ export default class AuthController {
       return;
     }
 
-    const refreshToken = response.data.payload.refreshToken;
-    const token = response.data.payload.token;
-
-    store.commit("setAuthToken", token);
+    const refreshToken = response.data.refreshToken;
     store.commit("setRefreshToken", refreshToken);
 
     BusyController.setFree();
+
+    await this.fetchToken();
   }
 
   static async login(email, password) {
