@@ -16,8 +16,7 @@
           v-else
         )
           AddContainer
-          CountContainer
-        
+
         Footer
 </template>
 
@@ -28,7 +27,6 @@ import Footer from "./components/Footer.vue";
 import Busy from "./components/Busy.vue";
 
 import AddContainer from "./containers/AddContainer.vue";
-import CountContainer from "./containers/CountContainer.vue";
 import AuthContainer from "./containers/AuthContainer.vue";
 import AuthController from "./controllers/AuthController";
 import BusyController from "./controllers/BusyController";
@@ -41,7 +39,6 @@ export default {
     Navbar,
     Title,
     AddContainer,
-    CountContainer,
     AuthContainer,
     Footer,
     Busy

@@ -5,14 +5,16 @@ import NotificationController from "./NotificationController";
 import BusyController from "./BusyController";
 
 export default class CoffeeController {
-  static async addCoffee() {
+  static async addCoffee(coffee) {
     BusyController.setBusy("Logging coffee");
     try {
       await Axios.post(
         `${constants.apiUrl}/coffee`,
         {
           Latitude: store.getters.getCoords[0],
-          Longitude: store.getters.getCoords[1]
+          Longitude: store.getters.getCoords[1],
+          Type: coffee.replace(/\s/g, ""),
+          From: "kaffee.dwelsh.uk"
         },
         {
           headers: { Authorization: `Bearer ${store.getters.getAuthToken}` }
