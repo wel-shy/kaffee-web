@@ -45,11 +45,11 @@ export default {
   width: 100%;
 }
 
-@media screen and (max-height: 800px)  {
-    #footer {
-        position: inherit;
-        display: inline-block;
-        height: 100%;
-    }
+@media screen and (max-height: 800px) {
+  #footer {
+    position: inherit;
+    display: inline-block;
+    height: 100%;
+  }
 }
 </style>
