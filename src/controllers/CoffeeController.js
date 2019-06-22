@@ -10,9 +10,12 @@ export default class CoffeeController {
     try {
       await Axios.post(
         `${constants.apiUrl}/coffee`,
-        {},
         {
-          headers: { "x-access-token": store.getters.getAuthToken }
+          Latitude: store.getters.getCoords[0],
+          Longitude: store.getters.getCoords[1]
+        },
+        {
+          headers: { Authorization: `Bearer ${store.getters.getAuthToken}` }
         }
       );
     } catch (error) {
@@ -29,15 +32,15 @@ export default class CoffeeController {
     BusyController.setBusy("Fetching coffee");
     let response;
     try {
-      response = await Axios.get(`${constants.apiUrl}/coffee/count`, {
-        headers: { "x-access-token": store.getters.getAuthToken }
+      response = await Axios.get(`${constants.apiUrl}/coffee/`, {
+        headers: { Authorization: `Bearer ${store.getters.getAuthToken}` }
       });
     } catch (error) {
       BusyController.setFree();
       NotificationController.setError("Could not fetch coffee count.");
       return;
     }
-    const count = response.data.payload.count;
+    const count = response.data.length;
     store.commit("setCount", count);
 
     BusyController.setFree();

@@ -22,7 +22,9 @@ export default {
     return {
       msg: "Log a coffee",
       buttonColor: "#00d1b2",
-      textColor: "#FFFFFF"
+      textColor: "#FFFFFF",
+      lat: "",
+      lon: ""
     };
   },
   methods: {

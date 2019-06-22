@@ -32,7 +32,7 @@ export default class AuthController {
     BusyController.setBusy("Logging in");
     let response;
     try {
-      response = await Axios.post(`${constants.apiUrl}/auth/authenticate`, {
+      response = await Axios.post(`${constants.apiUrl}/token/login`, {
         email,
         password
       });
@@ -42,8 +42,8 @@ export default class AuthController {
       return;
     }
 
-    const refreshToken = response.data.payload.refreshToken;
-    const token = response.data.payload.token;
+    const refreshToken = response.data.refreshToken;
+    const token = response.data.token;
 
     store.commit("setAuthToken", token);
     store.commit("setRefreshToken", refreshToken);
@@ -58,7 +58,7 @@ export default class AuthController {
     const refreshToken = localStorage.getItem("refreshToken");
     let response;
     try {
-      response = await Axios.post(`${constants.apiUrl}/auth/token`, {
+      response = await Axios.post(`${constants.apiUrl}/token/refresh`, {
         refreshToken
       });
     } catch (error) {
@@ -67,7 +67,7 @@ export default class AuthController {
       return;
     }
 
-    const token = response.data.payload.token;
+    const token = response.data.token;
     store.commit("setAuthToken", token);
 
     BusyController.setFree();
@@ -78,7 +78,7 @@ export default class AuthController {
     BusyController.setBusy("Deleting account");
     try {
       await Axios.delete(`${constants.apiUrl}/user`, {
-        headers: { "x-access-token": store.getters.getAuthToken }
+        headers: { Authorization: `Bearer ${store.getters.getAuthToken}` }
       });
     } catch (error) {
       BusyController.setFree();

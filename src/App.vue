@@ -33,6 +33,7 @@ import AuthContainer from "./containers/AuthContainer.vue";
 import AuthController from "./controllers/AuthController";
 import BusyController from "./controllers/BusyController";
 import CoffeeController from "./controllers/CoffeeController";
+import NotificationController from "./controllers/NotificationController";
 
 export default {
   name: "app",
@@ -53,6 +54,11 @@ export default {
       return this.$store.getters.getBusyStatus;
     }
   },
+  methods: {
+    setPosition: function(position) {
+      this.$store.commit("setCoords", position);
+    }
+  },
   mounted: async function() {
     BusyController.setBusy("Logging in");
 
@@ -65,6 +71,14 @@ export default {
     const token = await AuthController.fetchToken();
     if (token) {
       CoffeeController.getCoffeeCount();
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.setPosition);
+    } else {
+      NotificationController.setError(
+        "Coffees will not be tagged with a location."
+      );
     }
   }
 };
