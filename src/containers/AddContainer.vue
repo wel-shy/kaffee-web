@@ -1,12 +1,22 @@
 <template lang="pug">
     div#add-container.has-text-center
         section.section
-            Button(
-                @clicked="logCoffee()",
-                :msg="msg",
-                :color="buttonColor",
-                :textColor="textColor"
-            )
+            div.container
+              table.table.is-hoverable.is-fullwidth
+                tbody
+                  tr(
+                    v-for="coffee in coffeeTypes"
+                  )
+                    td.has-text-left {{ coffee }}
+                    td.has-text-right
+                      Button(
+                        @clicked="logCoffee(coffee)",
+                        :msg="msg",
+                        :color="buttonColor",
+                        :textColor="textColor"
+                      )
+              p You've had {{count}} damn fine cups of coffee
+
 </template>
 
 <script>
@@ -20,14 +30,30 @@ export default {
   },
   data: function() {
     return {
-      msg: "Log a coffee",
+      msg: "+",
       buttonColor: "#00d1b2",
-      textColor: "#FFFFFF"
+      textColor: "#FFFFFF",
+      lat: "",
+      lon: "",
+      coffeeTypes: [
+        "Americano",
+        "Espresso",
+        "Cappuccino",
+        "Latte",
+        "Freddo",
+        "Flat White",
+        "Other"
+      ]
     };
   },
   methods: {
-    logCoffee: async function() {
-      await CoffeeController.addCoffee();
+    logCoffee: async function(coffee) {
+      await CoffeeController.addCoffee(coffee);
+    }
+  },
+  computed: {
+    count: function() {
+      return this.$store.getters.getCount;
     }
   }
 };
