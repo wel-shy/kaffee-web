@@ -9,7 +9,7 @@ export default class AuthController {
     BusyController.setBusy("Registering account");
     let response;
     try {
-      response = await Axios.post(`${constants.apiUrl}/auth/register`, {
+      response = await Axios.post(`${constants.apiUrl}/user/`, {
         email,
         password
       });
@@ -19,20 +19,19 @@ export default class AuthController {
       return;
     }
 
-    const refreshToken = response.data.payload.refreshToken;
-    const token = response.data.payload.token;
-
-    store.commit("setAuthToken", token);
+    const refreshToken = response.data.refreshToken;
     store.commit("setRefreshToken", refreshToken);
 
     BusyController.setFree();
+
+    await this.fetchToken();
   }
 
   static async login(email, password) {
     BusyController.setBusy("Logging in");
     let response;
     try {
-      response = await Axios.post(`${constants.apiUrl}/auth/authenticate`, {
+      response = await Axios.post(`${constants.apiUrl}/token/login`, {
         email,
         password
       });
@@ -42,8 +41,8 @@ export default class AuthController {
       return;
     }
 
-    const refreshToken = response.data.payload.refreshToken;
-    const token = response.data.payload.token;
+    const refreshToken = response.data.refreshToken;
+    const token = response.data.token;
 
     store.commit("setAuthToken", token);
     store.commit("setRefreshToken", refreshToken);
@@ -58,7 +57,7 @@ export default class AuthController {
     const refreshToken = localStorage.getItem("refreshToken");
     let response;
     try {
-      response = await Axios.post(`${constants.apiUrl}/auth/token`, {
+      response = await Axios.post(`${constants.apiUrl}/token/refresh`, {
         refreshToken
       });
     } catch (error) {
@@ -67,7 +66,7 @@ export default class AuthController {
       return;
     }
 
-    const token = response.data.payload.token;
+    const token = response.data.token;
     store.commit("setAuthToken", token);
 
     BusyController.setFree();
@@ -78,7 +77,7 @@ export default class AuthController {
     BusyController.setBusy("Deleting account");
     try {
       await Axios.delete(`${constants.apiUrl}/user`, {
-        headers: { "x-access-token": store.getters.getAuthToken }
+        headers: { Authorization: `Bearer ${store.getters.getAuthToken}` }
       });
     } catch (error) {
       BusyController.setFree();

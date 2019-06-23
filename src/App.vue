@@ -16,8 +16,7 @@
           v-else
         )
           AddContainer
-          CountContainer
-        
+
         Footer
 </template>
 
@@ -28,11 +27,11 @@ import Footer from "./components/Footer.vue";
 import Busy from "./components/Busy.vue";
 
 import AddContainer from "./containers/AddContainer.vue";
-import CountContainer from "./containers/CountContainer.vue";
 import AuthContainer from "./containers/AuthContainer.vue";
 import AuthController from "./controllers/AuthController";
 import BusyController from "./controllers/BusyController";
 import CoffeeController from "./controllers/CoffeeController";
+import NotificationController from "./controllers/NotificationController";
 
 export default {
   name: "app",
@@ -40,7 +39,6 @@ export default {
     Navbar,
     Title,
     AddContainer,
-    CountContainer,
     AuthContainer,
     Footer,
     Busy
@@ -51,6 +49,11 @@ export default {
     },
     isBusy: function() {
       return this.$store.getters.getBusyStatus;
+    }
+  },
+  methods: {
+    setPosition: function(position) {
+      this.$store.commit("setCoords", position);
     }
   },
   mounted: async function() {
@@ -65,6 +68,14 @@ export default {
     const token = await AuthController.fetchToken();
     if (token) {
       CoffeeController.getCoffeeCount();
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.setPosition);
+    } else {
+      NotificationController.setError(
+        "Coffees will not be tagged with a location."
+      );
     }
   }
 };
