@@ -5,41 +5,29 @@
       Busy(
         v-if="isBusy"
       )
-      div(
-        v-else
+      
+      router-view(
+        v-if="isAuthenticated"
       )
-        AuthContainer(
-          v-if="!isAuthenticated"
-        )
 
-        div(
-          v-else
-        )
-          AddContainer
-
-        Footer
+      Footer
 </template>
 
 <script>
+import NotificationController from "./controllers/NotificationController";
+import AuthController from "./controllers/AuthController";
+import BusyController from "./controllers/BusyController";
+
 import Title from "./components/Title.vue";
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 import Busy from "./components/Busy.vue";
-
-import AddContainer from "./containers/AddContainer.vue";
-import AuthContainer from "./containers/AuthContainer.vue";
-import AuthController from "./controllers/AuthController";
-import BusyController from "./controllers/BusyController";
-import CoffeeController from "./controllers/CoffeeController";
-import NotificationController from "./controllers/NotificationController";
 
 export default {
   name: "app",
   components: {
     Navbar,
     Title,
-    AddContainer,
-    AuthContainer,
     Footer,
     Busy
   },
@@ -56,20 +44,7 @@ export default {
       this.$store.commit("setCoords", position);
     }
   },
-  mounted: async function() {
-    BusyController.setBusy("Logging in");
-
-    const refreshToken = localStorage.getItem("refreshToken");
-    if (!refreshToken) {
-      BusyController.setFree();
-      return;
-    }
-
-    const token = await AuthController.fetchToken();
-    if (token) {
-      CoffeeController.getCoffeeCount();
-    }
-
+  async mounted() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.setPosition);
     } else {
@@ -77,6 +52,14 @@ export default {
         "Coffees will not be tagged with a location."
       );
     }
+
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (!refreshToken) {
+      BusyController.setFree();
+      return;
+    }
+
+    await AuthController.fetchToken();
   }
 };
 </script>

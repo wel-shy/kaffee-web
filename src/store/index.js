@@ -6,6 +6,7 @@ import Auth from "./modules/Auth";
 import Notification from "./modules/Notification";
 import Busy from "./modules/Busy";
 import Location from "./modules/Location";
+import Leaderboard from "./modules/Leaderboard";
 
 Vue.use(Vuex);
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     Auth,
     Notification,
     Busy,
-    Location
+    Location,
+    Leaderboard
   }
 });
