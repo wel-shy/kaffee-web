@@ -15,7 +15,7 @@
         div(
           v-else
         )
-          AddContainer
+          CoffeeContainer
 
         Footer
 </template>
@@ -26,7 +26,7 @@ import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
 import Busy from "./components/Busy.vue";
 
-import AddContainer from "./containers/AddContainer.vue";
+import CoffeeContainer from "./containers/CoffeeContainer.vue";
 import AuthContainer from "./containers/AuthContainer.vue";
 import AuthController from "./controllers/AuthController";
 import BusyController from "./controllers/BusyController";
@@ -38,7 +38,7 @@ export default {
   components: {
     Navbar,
     Title,
-    AddContainer,
+    CoffeeContainer,
     AuthContainer,
     Footer,
     Busy

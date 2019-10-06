@@ -5,10 +5,15 @@ import NotificationController from "./NotificationController";
 import BusyController from "./BusyController";
 
 export default class CoffeeController {
+  /**
+   * Log a coffee remotely.
+   * @param {Coffee} coffee
+   */
   static async addCoffee(coffee) {
     BusyController.setBusy("Logging coffee");
+    let response;
     try {
-      await Axios.post(
+      response = await Axios.post(
         `${constants.apiUrl}/coffee`,
         {
           Latitude: store.getters.getCoords[0],
@@ -27,6 +32,7 @@ export default class CoffeeController {
     }
 
     store.commit("incrementCount");
+    store.commit("addCoffee", response.data);
     BusyController.setFree();
   }
 
@@ -44,6 +50,7 @@ export default class CoffeeController {
     }
     const count = response.data.length;
     store.commit("setCount", count);
+    store.commit("setCoffee", response.data);
 
     BusyController.setFree();
   }
